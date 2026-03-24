@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
-import { Zap, Lock, TrendingUp, Cpu, Settings, Cloud, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
+import Icon from "@/components/ui/icon";
 
 const Index = () => {
   const [visibleSections, setVisibleSections] = useState<Record<string, boolean>>({});
 
   useEffect(() => {
     const observers: Record<string, IntersectionObserver> = {};
-
     const sectionIds = ["hero", "features", "how", "pricing", "cta"];
 
     sectionIds.forEach((id) => {
@@ -36,9 +36,10 @@ const Index = () => {
       {/* Header */}
       <header className="fixed top-0 w-full bg-background/80 backdrop-blur-2xl border-b border-accent/20 z-50">
         <div className="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
-          <div className="flex items-center">
+          <div className="flex items-center gap-2">
+            <Icon name="MapPin" size={22} className="text-accent" />
             <div className="font-display font-bold text-2xl tracking-tighter bg-gradient-to-r from-white via-accent to-accent/80 bg-clip-text text-transparent">
-              AgentForge
+              TrackDrive
             </div>
           </div>
           <nav className="hidden md:flex gap-10 text-sm font-medium">
@@ -66,11 +67,10 @@ const Index = () => {
       {/* Hero Section */}
       <section id="hero" className="relative pt-32 pb-32 px-6 min-h-screen flex items-center overflow-hidden">
         <div className="absolute inset-0 w-full h-full flex items-center justify-center overflow-hidden">
-          <img src="/images/black-hole-gif.gif" alt="Black hole animation" className="w-auto h-3/4 object-contain" />
+          <img src="/images/black-hole-gif.gif" alt="Background animation" className="w-auto h-3/4 object-contain" />
         </div>
         <div className="absolute inset-0 bg-black/70" />
 
-        {/* Content overlay */}
         <div className="relative z-10 max-w-7xl mx-auto w-full">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div
@@ -78,23 +78,23 @@ const Index = () => {
             >
               <div className="mb-8 inline-block">
                 <span className="text-xs font-medium tracking-widest text-accent/80 uppercase">
-                  AI-инфраструктура нового поколения
+                  GPS-мониторинг нового поколения
                 </span>
               </div>
               <h1 className="text-6xl lg:text-7xl font-display font-black leading-tight mb-8 tracking-tighter">
                 <span className="bg-gradient-to-br from-white via-white to-accent/40 bg-clip-text text-transparent">
-                  Создавай. Запускай.
+                  Знай, где твой
                 </span>
                 <br />
-                <span className="text-accent">Автоматизируй.</span>
+                <span className="text-accent">автомобиль.</span>
               </h1>
               <p className="text-xl text-white/80 leading-relaxed mb-10 max-w-xl font-light">
-                AgentForge позволяет создавать, разворачивать и масштабировать умных AI-агентов.
-                От идеи до продакшена за минуты, а не месяцы.
+                TrackDrive — сервис онлайн-отслеживания автомобилей в реальном времени.
+                Контролируй маршрут, скорость и местоположение с любого устройства.
               </p>
               <div className="flex gap-4 mb-12 flex-col sm:flex-row">
                 <button className="group px-8 py-4 bg-gradient-to-r from-accent to-accent/90 text-black rounded-full hover:shadow-2xl hover:shadow-accent/50 transition-all font-semibold text-lg flex items-center gap-3 justify-center">
-                  Запустить сейчас
+                  Подключить сейчас
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition" />
                 </button>
                 <button className="px-8 py-4 border border-accent/40 rounded-full hover:border-accent/70 hover:bg-accent/10 transition-all font-medium text-lg text-white">
@@ -103,16 +103,16 @@ const Index = () => {
               </div>
               <div className="grid grid-cols-3 gap-8 pt-8 border-t border-white/10">
                 <div>
-                  <div className="text-2xl font-bold text-accent mb-2">10 000+</div>
-                  <p className="text-sm text-white/60">Активных агентов</p>
+                  <div className="text-2xl font-bold text-accent mb-2">50 000+</div>
+                  <p className="text-sm text-white/60">Автомобилей онлайн</p>
                 </div>
                 <div>
-                  <div className="text-2xl font-bold text-white mb-2">500 000+</div>
-                  <p className="text-sm text-white/60">Выполненных задач</p>
+                  <div className="text-2xl font-bold text-white mb-2">1 200+</div>
+                  <p className="text-sm text-white/60">Клиентов по России</p>
                 </div>
                 <div>
-                  <div className="text-2xl font-bold text-accent mb-2">99.99%</div>
-                  <p className="text-sm text-white/60">Аптайм</p>
+                  <div className="text-2xl font-bold text-accent mb-2">99.9%</div>
+                  <p className="text-sm text-white/60">Точность сигнала</p>
                 </div>
               </div>
             </div>
@@ -121,11 +121,37 @@ const Index = () => {
               className={`relative h-96 lg:h-[550px] transition-all duration-1000 flex items-center justify-center ${visibleSections["hero"] ? "opacity-100 scale-100" : "opacity-0 scale-95"}`}
             >
               <div className="absolute inset-0 bg-gradient-to-br from-accent/30 via-transparent to-transparent rounded-3xl blur-3xl animate-pulse" />
-              <img
-                src="/omnius-logo.png"
-                alt="Omnius Agent"
-                className="w-full max-w-sm lg:max-w-md drop-shadow-2xl animate-float relative z-10"
-              />
+              <div className="relative z-10 w-full max-w-sm lg:max-w-md">
+                <div className="bg-card/80 backdrop-blur-xl border border-accent/20 rounded-3xl p-6 shadow-2xl">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-3 h-3 rounded-full bg-accent animate-pulse" />
+                    <span className="text-sm font-medium text-white/80">Онлайн-трекер</span>
+                    <span className="ml-auto text-xs text-accent font-semibold">LIVE</span>
+                  </div>
+                  <div className="bg-black/40 rounded-2xl h-48 flex items-center justify-center mb-4 border border-accent/10 relative overflow-hidden">
+                    <div className="absolute inset-0 opacity-20" style={{backgroundImage: "radial-gradient(circle, #00ff88 1px, transparent 1px)", backgroundSize: "20px 20px"}} />
+                    <Icon name="MapPin" size={48} className="text-accent drop-shadow-lg" />
+                  </div>
+                  <div className="grid grid-cols-2 gap-3 text-sm">
+                    <div className="bg-accent/10 rounded-xl p-3">
+                      <p className="text-white/50 text-xs mb-1">Скорость</p>
+                      <p className="font-bold text-accent">62 км/ч</p>
+                    </div>
+                    <div className="bg-accent/10 rounded-xl p-3">
+                      <p className="text-white/50 text-xs mb-1">Статус</p>
+                      <p className="font-bold text-white">В движении</p>
+                    </div>
+                    <div className="bg-accent/10 rounded-xl p-3">
+                      <p className="text-white/50 text-xs mb-1">Маршрут</p>
+                      <p className="font-bold text-white">МКД → Аэропорт</p>
+                    </div>
+                    <div className="bg-accent/10 rounded-xl p-3">
+                      <p className="text-white/50 text-xs mb-1">Обновлено</p>
+                      <p className="font-bold text-accent">5 сек назад</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -140,7 +166,7 @@ const Index = () => {
             <span className="text-xs font-medium tracking-widest text-accent/60 uppercase">Возможности</span>
             <h2 className="text-5xl lg:text-6xl font-display font-black tracking-tighter mt-4 mb-6">
               <span className="bg-gradient-to-r from-white via-white to-accent/40 bg-clip-text text-transparent">
-                Суперсилы встроены
+                Полный контроль над флотом
               </span>
             </h2>
           </div>
@@ -148,49 +174,50 @@ const Index = () => {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
               {
-                icon: Zap,
-                title: "Молниеносный деплой",
-                desc: "Развертывание в продакшен одним кликом без настройки",
+                icon: "MapPin",
+                title: "GPS в реальном времени",
+                desc: "Местоположение обновляется каждые 5 секунд с точностью до 5 метров",
               },
               {
-                icon: Cpu,
-                title: "Умный AI-движок",
-                desc: "Продвинутые возможности рассуждения, которые учатся и адаптируются",
+                icon: "Bell",
+                title: "Умные уведомления",
+                desc: "Мгновенные оповещения при выезде за зону, превышении скорости или остановке",
               },
               {
-                icon: TrendingUp,
-                title: "Автомасштабирование",
-                desc: "Автоматическое масштабирование ресурсов на основе нагрузки",
+                icon: "TrendingUp",
+                title: "История маршрутов",
+                desc: "Полная история поездок с датами, маршрутами и статистикой пробега",
               },
               {
-                icon: Lock,
-                title: "Корпоративная безопасность",
-                desc: "Банковское шифрование и соответствие SOC2, GDPR, HIPAA",
+                icon: "Shield",
+                title: "Защита от угона",
+                desc: "Моментальное оповещение при несанкционированном запуске или перемещении",
               },
               {
-                icon: Settings,
-                title: "Гибкие сценарии",
-                desc: "Создавайте сложные цепочки автоматизации в визуальном редакторе",
+                icon: "BarChart2",
+                title: "Аналитика и отчёты",
+                desc: "Детальная статистика по каждому автомобилю: пробег, топливо, время в пути",
               },
               {
-                icon: Cloud,
-                title: "Мультиоблачность",
-                desc: "Разворачивайте где угодно - AWS, Azure, GCP или своя инфраструктура",
+                icon: "Smartphone",
+                title: "Мобильное приложение",
+                desc: "Управляй всем с телефона — iOS и Android, без привязки к компьютеру",
               },
             ].map((item, i) => {
-              const Icon = item.icon;
               const isVisible = visibleSections["features"];
               return (
                 <div
                   key={i}
-                  className={`group p-8 border border-accent/10 hover:border-accent/40 rounded-2xl bg-card/50 hover:bg-card/80 transition-all duration-500 cursor-pointer backdrop-blur-sm ${
+                  className={`group p-8 border border-accent/10 hover:border-accent/40 rounded-2xl bg-card/50 hover:bg-card/80 transition-all duration-700 ${
                     isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
                   }`}
                   style={{ transitionDelay: `${i * 100}ms` }}
                 >
-                  <Icon className="w-10 h-10 mb-6 text-accent group-hover:scale-110 transition-transform" />
+                  <div className="w-12 h-12 rounded-xl bg-accent/10 group-hover:bg-accent/20 flex items-center justify-center mb-6 transition-colors">
+                    <Icon name={item.icon} size={22} className="text-accent" />
+                  </div>
                   <h3 className="font-display font-bold text-xl mb-3">{item.title}</h3>
-                  <p className="text-muted-foreground leading-relaxed">{item.desc}</p>
+                  <p className="text-muted-foreground text-sm leading-relaxed">{item.desc}</p>
                 </div>
               );
             })}
@@ -204,21 +231,35 @@ const Index = () => {
           <div
             className={`text-center mb-20 transition-all duration-1000 ${visibleSections["how"] ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
           >
-            <span className="text-xs font-medium tracking-widest text-accent/60 uppercase">Процесс</span>
+            <span className="text-xs font-medium tracking-widest text-accent/60 uppercase">Как это работает</span>
             <h2 className="text-5xl lg:text-6xl font-display font-black tracking-tighter mt-4">
               <span className="bg-gradient-to-r from-white via-white to-accent/40 bg-clip-text text-transparent">
-                От нуля до героя
+                Три шага — и вы под защитой
               </span>
             </h2>
           </div>
 
-          <div className="grid md:grid-cols-4 gap-6">
+          <div className="grid md:grid-cols-3 gap-8">
             {[
-              { num: "01", title: "Проектируй", desc: "Определите возможности агента в интуитивном конструкторе" },
-              { num: "02", title: "Обучай", desc: "Загрузите данные и примеры для настройки поведения" },
-              { num: "03", title: "Запускай", desc: "Запуск в продакшен одним кликом" },
-              { num: "04", title: "Масштабируй", desc: "Автомасштабирование обрабатывает миллионы запросов" },
-            ].map((step, i) => {
+              {
+                step: "01",
+                icon: "Package",
+                title: "Установите трекер",
+                desc: "Наш специалист приедет и установит GPS-маяк в автомобиль за 30 минут. Без сверления и видимых изменений.",
+              },
+              {
+                step: "02",
+                icon: "Wifi",
+                title: "Подключитесь к платформе",
+                desc: "Войдите в личный кабинет или скачайте приложение. Ваш автомобиль уже отображается на карте.",
+              },
+              {
+                step: "03",
+                icon: "Eye",
+                title: "Следите в реальном времени",
+                desc: "Наблюдайте за маршрутом, получайте уведомления и просматривайте историю поездок 24/7.",
+              },
+            ].map((item, i) => {
               const isVisible = visibleSections["how"];
               return (
                 <div
@@ -226,20 +267,18 @@ const Index = () => {
                   className={`relative transition-all duration-700 ${
                     isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
                   }`}
-                  style={{ transitionDelay: `${i * 150}ms` }}
+                  style={{ transitionDelay: `${i * 200}ms` }}
                 >
-                  <div className="group bg-accent/10 hover:bg-accent/20 border border-accent/20 hover:border-accent/40 rounded-2xl p-8 h-full flex flex-col justify-between transition-all backdrop-blur-sm cursor-pointer">
-                    <div>
-                      <div className="text-5xl font-display font-black text-accent mb-4 group-hover:scale-110 transition-transform">
-                        {step.num}
+                  <div className="p-8 border border-accent/10 rounded-2xl bg-card/30 hover:bg-card/60 hover:border-accent/30 transition-all h-full">
+                    <div className="flex items-start gap-4 mb-6">
+                      <span className="text-5xl font-black text-accent/20 font-display leading-none">{item.step}</span>
+                      <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center flex-shrink-0 mt-1">
+                        <Icon name={item.icon} size={22} className="text-accent" />
                       </div>
-                      <h3 className="font-display font-bold text-xl mb-2">{step.title}</h3>
-                      <p className="text-muted-foreground leading-relaxed">{step.desc}</p>
                     </div>
+                    <h3 className="font-display font-bold text-xl mb-3">{item.title}</h3>
+                    <p className="text-muted-foreground text-sm leading-relaxed">{item.desc}</p>
                   </div>
-                  {i < 3 && (
-                    <div className="hidden md:block absolute top-1/2 -right-3 w-6 h-0.5 bg-gradient-to-r from-accent/40 to-transparent" />
-                  )}
                 </div>
               );
             })}
@@ -264,15 +303,27 @@ const Index = () => {
           <div className="grid md:grid-cols-2 gap-8">
             {[
               {
-                name: "Стартовый",
-                price: "4 900 \u20bd/\u043c\u0435\u0441",
-                features: ["До 10 агентов", "100 000 запросов/месяц", "Поддержка сообщества", "Базовая аналитика"],
+                name: "Базовый",
+                price: "990 ₽/мес",
+                features: [
+                  "До 3 автомобилей",
+                  "Обновление каждые 30 сек",
+                  "История маршрутов 30 дней",
+                  "Push-уведомления",
+                  "Мобильное приложение",
+                ],
                 highlight: false,
               },
               {
-                name: "Корпоративный",
+                name: "Бизнес",
                 price: "По запросу",
-                features: ["Безлимитные агенты", "Безлимитные запросы", "Поддержка 24/7", "Индивидуальные интеграции"],
+                features: [
+                  "Безлимитный автопарк",
+                  "Обновление каждые 5 сек",
+                  "История без ограничений",
+                  "Отчёты и аналитика",
+                  "Поддержка 24/7 + менеджер",
+                ],
                 highlight: true,
               },
             ].map((plan, i) => {
@@ -329,14 +380,14 @@ const Index = () => {
         >
           <h2 className="text-5xl lg:text-6xl font-display font-black tracking-tighter mb-6">
             <span className="bg-gradient-to-r from-white via-white to-accent/40 bg-clip-text text-transparent">
-              Готовы создавать?
+              Знай, где твои авто прямо сейчас
             </span>
           </h2>
           <p className="text-xl text-muted-foreground mb-12 font-light max-w-2xl mx-auto">
-            Присоединяйтесь к тысячам разработчиков, которые строят будущее с AgentForge.
+            Подключи первый автомобиль бесплатно и убедись, как легко держать всё под контролем.
           </p>
           <button className="group px-10 py-5 bg-gradient-to-r from-accent to-accent/90 text-black rounded-full hover:shadow-2xl hover:shadow-accent/40 transition-all font-bold text-lg flex items-center gap-3 mx-auto">
-            Начать бесплатно
+            Подключить бесплатно
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition" />
           </button>
         </div>
@@ -345,7 +396,7 @@ const Index = () => {
       {/* Footer */}
       <footer className="border-t border-accent/10 py-12 px-6 bg-background/50">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6 text-sm text-muted-foreground">
-          <p>© 2025 AgentForge — Создавайте умных агентов</p>
+          <p>© 2026 TrackDrive — GPS-мониторинг автомобилей</p>
           <div className="flex gap-8">
             <a href="#" className="hover:text-white transition-colors">
               Конфиденциальность
